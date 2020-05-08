@@ -59,3 +59,35 @@ rules:
   - clusterresourcequotas
   verbs:
   - '*'
+# CS SRE can list/get on crds 
+- apiGroups:
+  - "apiextensions.k8s.io"
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - list
+  - get
+# CS SRE manage the following list of apigroups
+- apiGroups:
+  - "apiextensions.k8s.io"
+  - "admin-enmasse.io"
+  - "apicur.io"
+  - "applicationmonitoring.integreatly.org"
+  - "apps.3scale.net"
+  - "capabilities.3scale.net"
+  - "enmasse.io"
+  - "iot.enmasse.io"
+  - "keycloak.org"
+  - "monitoring.coreos.com"
+  - "push.aerogear.org"
+  - "org.eclipse.che"
+  - "syndesis.io"
+  resources:
+  - '*'
+  verbs:
+  - create
+  - get
+  - list 
+  - patch 
+  - update 
+  - watch

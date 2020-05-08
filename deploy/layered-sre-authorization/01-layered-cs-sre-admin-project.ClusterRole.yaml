@@ -10,12 +10,16 @@ rules:
   - pods/exec
   verbs:
   - create
-# CS SRE can delete jobs and builds
+# CS SRE can delete/list/get jobs and builds
 - apiGroups:
   - batch
   resources:
   - jobs
+  - cronjobs
   verbs:
+  - watch
+  - get
+  - list
   - delete
   - deletecollection
 - apiGroups:
@@ -89,6 +93,22 @@ rules:
   - apps
   resources:
   - statefulsets
+  verbs:
+  - list
+  - get
+# CS SRE can list/get events
+- apiGroups:
+  - ""
+  resources:
+  - events
+  verbs:
+  - list
+  - get
+ # CS SRE can list/get endpoints
+- apiGroups:
+  - ""
+  resources:
+  - endpoints
   verbs:
   - list
   - get
